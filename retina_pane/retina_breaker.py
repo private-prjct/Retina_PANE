@@ -3,9 +3,9 @@ from torchvision.models.detection import (
     retinanet_resnet50_fpn_v2,
     RetinaNet_ResNet50_FPN_V2_Weights
 )
-
+device = "cuda" if torch.cuda.is_available() else "cpu"
 class RetinaCloakEngine:
-    def __init__(self, device="cpu"):
+    def __init__(self, device=device):
         self.device = device
         weights = RetinaNet_ResNet50_FPN_V2_Weights.DEFAULT
         self.model = retinanet_resnet50_fpn_v2(
